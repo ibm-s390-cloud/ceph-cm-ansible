@@ -84,9 +84,9 @@ common_packages:
   - libgnutls30
 
 non_aarch64_common_packages:
-  - smbios-utils
+  # - smbios-utils
   - libfcgi
-  - sysprof
+  # - sysprof
 
 packages_to_upgrade:
   - apt

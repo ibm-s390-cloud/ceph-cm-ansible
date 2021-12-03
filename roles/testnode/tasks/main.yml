@@ -143,6 +143,7 @@
     - /etc/systemd/system/
     - /etc/ceph
     - /var/log/
+    - /var/lib/ceph
   register: ceph_test_artifacts
   changed_when: ceph_test_artifacts.stdout != ""
   failed_when: ceph_test_artifacts.rc != 0 and

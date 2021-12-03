@@ -5,7 +5,7 @@ nfs_service: nfs-kernel-server
 
 packages_to_remove:
   # multipath interferes with krbd tests
-  - multipath-tools
+  # - multipath-tools
 
 ceph_packages_to_remove:
   - ceph

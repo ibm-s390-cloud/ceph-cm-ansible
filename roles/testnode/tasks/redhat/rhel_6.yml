@@ -2,4 +2,4 @@
 - name: Fix broken cloud-init
   import_tasks: ../cloud-init.yml
 
-- import_tasks: ../imitate_ubuntu.yml
+# - import_tasks: ../imitate_ubuntu.yml

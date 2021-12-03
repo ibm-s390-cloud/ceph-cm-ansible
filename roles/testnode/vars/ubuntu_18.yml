@@ -1,7 +1,7 @@
 ---
 packages:
   - mpich
-  - qemu-system-x86
+  # - qemu-system-x86
   - python-virtualenv
   - python-configobj
   - python-gevent

@@ -1,4 +1,4 @@
 {# {{ ansible_managed }} #}
 Package: *
-Pin: origin *.ceph.com
+Pin: origin *.lnxne.boe
 Pin-Priority: 999
