@@ -6,7 +6,8 @@ apt_repos:
 packages:
   - libboost-thread1.58.0
   - mpich
-  # - qemu-system-x86
+  - qemu-system-s390x
+  - qemu-utils
   - python-virtualenv
   - python-configobj
   - python-gevent

@@ -1,5 +1,5 @@
 ---
 vmhost_apt_packages:
-  - qemu-kvm
+  # - qemu-kvm
   - libvirt-bin
   - bridge-utils

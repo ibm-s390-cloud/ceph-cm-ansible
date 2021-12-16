@@ -71,8 +71,8 @@ packages:
   - mencoder
   ###
   # for qemu
-  - kvm
-  - genisoimage
+  # - kvm
+  # - genisoimage
   ###
   # for json_xs to investigate JSON by hand
   - libjson-xs-perl
