@@ -1,5 +1,5 @@
 ---
-timezone: "Etc/UTC"
+# timezone: "Etc/UTC"
 timezone: "Europe/Berlin"
 
 # Red Hat Subscription Manager credentials
