@@ -1,5 +1,6 @@
 ---
 # vars specific to any centos 8.x version
+# some of these will be overridden by vars in centos_8_stream.yml
 
 common_yum_repos:
   lab-extras:
@@ -7,11 +8,6 @@ common_yum_repos:
     baseurl: "http://{{ mirror_host }}/lab-extras/8/"
     enabled: 1
     gpgcheck: 0
-  apache-arrow:
-    name: "Apache Arrow"
-    baseurl: "https://apache.jfrog.io/artifactory/arrow/centos/8/$basearch"
-    enabled: 1
-    gpgcheck: 1
 
 # These will overwrite the repo files that come with a CentOS installation
 yum_repos:
@@ -21,9 +17,9 @@ yum_repos:
     gpgcheck: 1
     enabled: 1
     gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
-  CentOS-Base:
-    name: "CentOS-$releasever - Base"
-    mirrorlist: file:///etc/yum.repos.d/CentOS-Base-mirrorlist
+  CentOS-BaseOS:
+    name: "CentOS-$releasever - BaseOS"
+    mirrorlist: file:///etc/yum.repos.d/CentOS-BaseOS-mirrorlist
     gpgcheck: 1
     enabled: 1
     gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
@@ -43,7 +39,7 @@ yum_repos:
 # These are files in roles/testnodes/templates/mirrorlists/8/
 yum_mirrorlists:
   - CentOS-AppStream-mirrorlist
-  - CentOS-Base-mirrorlist
+  - CentOS-BaseOS-mirrorlist
   - CentOS-Extras-mirrorlist
   - CentOS-PowerTools-mirrorlist
 

@@ -9,6 +9,8 @@
     group: root
     owner: root
     mode: 0644
+  when:
+    - not containerized_node
 
 - name: Set mode on /etc/fuse.conf
   file:
@@ -53,12 +55,28 @@
 - name: Rebuild rpmdb
   command:
     rpm --rebuilddb
+  # https://bugzilla.redhat.com/show_bug.cgi?id=1680124
+  when:
+    not containerized_node
+
+- name: Check /etc/os-release to see if this is CentOS Stream
+  shell: "grep 'CentOS Stream' /etc/os-release || true"
+  register: stream_in_osrelease
+  tags:
+    - repos
+
+# Setting this var will add "-stream" to the mirrorlist/baseurl URLs in .repo files
+- set_fact:
+    dash_stream: "-stream"
+    is_stream: true
+  when: (ansible_lsb.description is defined and "Stream" in ansible_lsb.description) or
+        stream_in_osrelease.stdout is search("CentOS Stream")
+  tags:
+    - repos
 
 - name: Perform CentOS Stream related tasks
   import_tasks: yum/stream.yml
-  when:
-    - ansible_lsb.description is defined
-    - '"Stream" in ansible_lsb.description'
+  when: is_stream|default('false')|bool
   tags:
     - repos
 
