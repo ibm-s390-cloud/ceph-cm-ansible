@@ -1,4 +1,4 @@
 {# {{ ansible_managed }} #}
 Package: *
-Pin: origin *.lnxne.boe
+Pin: origin *.lnxero1.boe
 Pin-Priority: 999
