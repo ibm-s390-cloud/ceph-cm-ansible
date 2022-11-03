@@ -18,11 +18,27 @@
   set_fact:
     have_entitlements: "{{ subscription_manager_org != '' and subscription_manager_activationkey != ''}}"
 
+- name: Find existing CA Cert RPMs
+  command: rpm -qa katello-ca-consumer*
+  register: existing_satellite_cert
+  when: use_satellite == true
+
+- name: Uninstall previous CA Certs from Satellite Servers
+  command: rpm -e "{{ existing_satellite_cert.stdout }}"
+  when:
+    - use_satellite == true
+    - existing_satellite_cert.stdout|length>0
+
+- name: Subscription-manager clean
+  command: subscription-manager clean
+  when: use_satellite == true
+
 - name: Install CA Cert from Satellite Server
   yum:
     name: "{{ satellite_cert_rpm }}"
     state: present
     validate_certs: no
+    disable_gpg_check: yes
   when: use_satellite == true
 
 # set the releasever cause without it rhel-7-server-rpms repo fails on rhel7.9 machines
@@ -31,7 +47,7 @@
 # However, we do not want to lock the release ver on all our systems; just testnodes.
 - name: Set the releasever
   copy:
-    content: "{{ ansible_lsb.release }}"
+    content: "{{ ansible_distribution_version }}"
     dest: /etc/yum/vars/releasever
   when: inventory_hostname in groups['testnodes']
 
@@ -53,6 +69,7 @@
   command: subscription-manager register
            --activationkey={{ subscription_manager_activationkey }}
            --org={{ subscription_manager_org }}
+           --name={{ ansible_fqdn }}
            {% if set_rhsm_release|default(false)|bool == true %}--release={{ ansible_distribution_version }}{% endif %}
            --force
   no_log: true

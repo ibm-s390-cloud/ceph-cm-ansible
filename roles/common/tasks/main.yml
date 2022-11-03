@@ -43,7 +43,6 @@
 
 # configure nagios (Except CentOS 9 Stream)
 - import_tasks: nagios.yml
-  when: not (ansible_distribution == "CentOS" and ansible_distribution_major_version == "9")
   tags:
     - nagios
 
@@ -60,3 +59,9 @@
         (selinux_status is defined and selinux_status.stdout != "Disabled")
   tags:
     - nagios
+
+- name: include secondary NIC config tasks
+  import_tasks: secondary_nic.yml
+  when: secondary_nic_mac is defined
+  tags:
+    - secondary-nic

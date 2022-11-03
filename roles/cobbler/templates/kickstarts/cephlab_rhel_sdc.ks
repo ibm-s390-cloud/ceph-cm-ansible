@@ -1,5 +1,5 @@
 ## {{ ansible_managed }}
-## This kickstart for use with systems where /dev/sdi is the root drive (e.g., callypso)
+## This kickstart for use with systems where /dev/sdc is the root drive (e.g., cali)
 # kickstart template for Fedora 8 and later.
 # (includes %end blocks)
 # do not use with earlier distros
@@ -20,15 +20,15 @@ authselect select minimal
 #set os_version = $getVar('os_version','')
 # Partition clearing information
 clearpart --all --initlabel
-# Use all of /dev/sdi for the root partition (20G minimum)
-part / --fstype="ext4" --ondisk=sdi --size=20000 --grow
+# Use all of /dev/sdc for the root partition (20G minimum)
+part / --fstype="ext4" --ondisk=sdc --size=20000 --grow
 # Clear the Master Boot Record
 zerombr
 # System bootloader configuration
 #if $os_version == 'rhel7'
-    #set bootloader_args = "--location=mbr --boot-drive=sdi"
+    #set bootloader_args = "--location=mbr --boot-drive=sdc"
 #else
-    #set bootloader_args = "--location=mbr --driveorder=sdi"
+    #set bootloader_args = "--location=mbr --driveorder=sdc"
 #end if
 bootloader $bootloader_args
 # Use text mode install

@@ -31,6 +31,7 @@ settings:
 
 kickstarts:
   - cephlab_rhel.ks
+  - cephlab_rhel_sdc.ks
   - cephlab_ubuntu.preseed
   - cephlab_opensuse_leap.xml
   
@@ -75,3 +76,11 @@ power_pass: powerpass
 pip_packages:
   - pip
   - ansible
+
+cobbler_settings_file: /etc/cobbler/settings
+
+kopts_flag: "--kopts"
+
+autoinstall_flag: "--kickstart"
+
+ks_dir: /var/lib/cobbler/kickstarts
