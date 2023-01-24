@@ -107,13 +107,13 @@
   tags:
     - cachefilesd
 
-# Install and configure cpan and Amazon::S3
-- import_tasks: cpan.yml
-  tags:
-    - cpan
-  when:
-    - ansible_os_family != "RedHat"
-    - ansible_distribution_major_version != 8
+# # Install and configure cpan and Amazon::S3
+# - import_tasks: cpan.yml
+#   tags:
+#     - cpan
+#   when:
+#     - ansible_os_family != "RedHat"
+#     - ansible_distribution_major_version != 8
 
 # configure ntp
 - import_tasks: ntp.yml
