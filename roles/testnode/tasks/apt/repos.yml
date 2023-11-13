@@ -46,9 +46,9 @@
   delay: 5
 
 # required for apt_repository
-- name: Install python-apt
+- name: Install python3-apt
   apt:
-    name: "{{ python_apt_package_name|default('python-apt') }}"
+    name: "{{ python_apt_package_name|default('python3-apt') }}"
     state: present
 
 - name: Add local apt repos.
