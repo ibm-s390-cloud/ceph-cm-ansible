@@ -40,11 +40,11 @@
     - perl-doc
   when: ansible_pkg_mgr == "apt"
 
-- name: "Check to see if Amazon::S3 is installed."
-  command: "perldoc -l Amazon::S3"
-  register: cpan_check
-  ignore_errors: true
-  changed_when: false
+# - name: "Check to see if Amazon::S3 is installed."
+#   command: "perldoc -l Amazon::S3"
+#   register: cpan_check
+#   ignore_errors: true
+#   changed_when: false
 
 - name: "Install Amazon::S3."
   cpanm:

@@ -9,13 +9,13 @@
   notify:
     - restart cron
 
-- name: Upload /etc/grub.d/02_force_timeout.
-  template:
-    src: grub.d/02_force_timeout
-    dest: /etc/grub.d/02_force_timeout
-    owner: root
-    group: root
-    mode: 0755
+# - name: Upload /etc/grub.d/02_force_timeout.
+#   template:
+#     src: grub.d/02_force_timeout
+#     dest: /etc/grub.d/02_force_timeout
+#     owner: root
+#     group: root
+#     mode: 0755
 
 - name: Enable kernel modules to load at boot time.
   template:
