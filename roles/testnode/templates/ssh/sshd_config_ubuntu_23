@@ -89,3 +89,6 @@ Subsystem sftp /usr/lib/openssh/sftp-server
 UsePAM yes
 
 MaxSessions 1000
+
+HostKeyAlgorithms +ssh-rsa
+PubkeyAcceptedKeyTypes +ssh-rsa
