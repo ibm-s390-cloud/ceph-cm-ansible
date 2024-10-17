@@ -66,10 +66,6 @@ common_packages:
   - default-jdk
   - junit4
   ###
-  # tgt
-  - tgt
-  - open-iscsi
-  ###
   # for samba testing
   - cifs-utils
   # for Static IP
@@ -96,7 +92,3 @@ non_aarch64_packages_to_upgrade:
 
 no_recommended_packages:
   - collectl
-
-packages_to_remove:
-   # openmpi-common conflicts with mpitch stuff
-  - openmpi-common

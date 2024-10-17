@@ -1,17 +1,17 @@
 ---
 - name: Check to see if the kernel exists
-  stat: path={{ kernel_path }} get_checksum=no get_md5=no
+  stat: path={{ kernel_path }} get_checksum=no
   register: kernel_stat
 
 - name: Check to see if the initrd exists
-  stat: path={{ initrd_path }} get_checksum=no get_md5=no
+  stat: path={{ initrd_path }} get_checksum=no
   register: initrd_stat
 
 - name: Download kernel
   get_url:
       url={{ distro.kernel }}
       dest={{ kernel_path }}
-      sha256sum={{ distro.kernel_sha256 }}
+      checksum=sha256:{{ distro.kernel_sha256 }}
   when: profile is defined and profile.stdout == ''
   register: download_kernel
 
@@ -19,7 +19,7 @@
   get_url:
       url={{ distro.initrd }}
       dest={{ initrd_path }}
-      sha256sum={{ distro.initrd_sha256 }}
+      checksum=sha256:{{ distro.initrd_sha256 }}
   when: profile is defined and profile.stdout == ''
   register: download_initrd
 
