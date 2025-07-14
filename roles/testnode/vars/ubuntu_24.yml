@@ -1,7 +1,7 @@
 ---
 packages:
   - mpich
-  - qemu-system-x86
+  - qemu-system-s390x
 #  - blkin
   - lttng-tools
   # for building xfstests #18067
