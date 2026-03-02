@@ -79,9 +79,9 @@
 - import_tasks: check-for-nvme.yml
   when: check_for_nvme == true
 
-- import_tasks: zap_disks.yml
-  tags:
-    - zap
+# - import_tasks: zap_disks.yml
+#   tags:
+#     - zap
 
 - name: partition drives, if any are requested
   import_tasks: drive_partitioning.yml
