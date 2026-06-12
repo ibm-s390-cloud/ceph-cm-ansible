@@ -38,10 +38,10 @@
   loop: "{{ ifcfg_scripts.stdout_lines | default([]) }}"
   when: ifcfg_scripts is defined
 
-- name: Unsubscribe RHEL
-  command: subscription-manager unregister
-  when: ansible_distribution == "RedHat"
-  failed_when: false
+# - name: Unsubscribe RHEL
+#   command: subscription-manager unregister
+#   when: ansible_distribution == "RedHat"
+#   failed_when: false
 
 # A file gets leftover when a testnode is registered with Satellite that caused
 # each registered subsequent testnode to report the wrong hostname

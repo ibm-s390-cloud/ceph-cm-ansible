@@ -60,14 +60,14 @@
     state: present
   when: ansible_distribution == 'Fedora' and ansible_distribution_major_version|int >= 22
 
-# configure Red Hat entitlements with subscription-manager
-# skip_entitlements=true on OVH testnodes
-- import_tasks: rhel-entitlements.yml
-  when:
-    ansible_distribution == 'RedHat' and
-    skip_entitlements|default(false)|bool != true
-  tags:
-    - entitlements
+# # configure Red Hat entitlements with subscription-manager
+# # skip_entitlements=true on OVH testnodes
+# - import_tasks: rhel-entitlements.yml
+#   when:
+#     ansible_distribution == 'RedHat' and
+#     skip_entitlements|default(false)|bool != true
+#   tags:
+#     - entitlements
 
 # create and manage epel.repo
 - import_tasks: epel.yml
