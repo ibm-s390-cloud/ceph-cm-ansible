@@ -48,10 +48,10 @@
 - import_tasks: setup_paddles.yml
   when: not paddles_containerized
 
-# Set up the DB which paddles uses
-- import_tasks: setup_db.yml
-  tags:
-    - db
+# # Set up the DB which paddles uses
+# - import_tasks: setup_db.yml
+#   tags:
+#     - db
 
 # Set up docker if necessary
 - import_tasks: setup_docker.yml
