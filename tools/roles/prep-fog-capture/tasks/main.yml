@@ -114,8 +114,8 @@
   command: chronyc -a makestep
   when: '"chrony" in ntp_service'
 
-- name: Sync the hardware clock
-  command: "hwclock --systohc"
+# - name: Sync the hardware clock
+#   command: "hwclock --systohc"
 
 - name: Disable cloud init and disruptive apt services
   systemd:
